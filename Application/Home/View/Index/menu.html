@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<include file="Public/meta" />
+		<style>
+			html {
+				overflow: hidden;
+			}
+		</style>
+	</head>
+
+	<body class="index_menu">
+		<div class="system_menu f16" id="system_menu">
+			<ul class="nav_list">
+				<li class="nav">
+					<a href="{:U('Index/main')}" target="frame_main">后台首页</a>
+				</li>
+				<foreach name="navList" item="vo">
+					<li class="nav">
+						<a href="javascript:;">{$vo[name]}</a>
+					</li>
+					<ul class="nav_child_list">
+						<foreach name="vo[navChildList]" item="vo2">
+							<li class="nav_child" id="nav_child_{$vo2[id]}">
+								<span>└ </span>
+								<a href="__MODULE__/{$vo2[func]}" target="frame_main">{$vo2[name]}</a>
+							</li>
+						</foreach>
+					</ul>
+				</foreach>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#system_menu ul li").next("ul").hide();
+				$(".nav").click(function() {
+					$('.nav_child_list').hide();
+					$(this).next("ul").toggle();
+				});
+				$(".nav_child").on("click", function() {
+					//var hrefStr = $(this).find("a").attr("href");
+					//nameStr = $(this).find("a").text();
+					//window.parent.frames("header").hello_top();
+					//window.prarent.frames['header'].location.system_name='aaa';
+					//var test = parent.frames['header'].getElementsByClassName('system_name').text();
+					//console.log(test);
+				});
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<include file="Public/meta" />
+		<script>
+			//修改密码
+			function updatePwd() {
+				layer.open({
+					type: 2,
+					closeBtn: 0,
+					area: [layer.getAutoWidth() + 'px', '300px'],
+					shadeClose: true,
+					title: '修改密码',
+					content: './edit_pwd.html'
+				});
+			}
+
+			//清理缓存
+			function clearCache() {
+				layer.open({
+					type: 2,
+					closeBtn: 0,
+					area: [layer.getAutoWidth() + 'px', '300px'],
+					shadeClose: true,
+					title: '清理缓存',
+					content: './clear_cache.html'
+				});
+			}
+
+			//退出系统
+			function logout() {
+				$.post("{:U('Public/logout')}", {},
+					function(data) {
+						if(data.code == 200) {
+							jumpHref("{:U('Public/login')}");
+						} else {
+							showLayerMsg(data.msg);
+						}
+					}, "json");
+			//				layer.open({
+			//					type: 2,
+			//					closeBtn: 0,
+			//					area: [layer.getAutoWidth() + 'px', '200px'],
+			//					shadeClose: true,
+			//					title: '退出系统',
+			//					content: './logout.html'
+			//			});
+			}
+		</script>
+	</head>
+
+	<body class="index_header">
+		<div class="system_name left f30"><span class="text-center">后台管理系统</span></div>
+
+		<div id="times" style="font-size:20px;text-align:center;color: white;"></div>
+		<div id="local" style="font-size:20px;text-align:center;color: white;">1900/1/1 00:00:00</div>
+
+		<div class="right">
+			<ul class="">
+				<li>
+					<a href="javascript:;" onclick="return updatePwd();">密码修改</a>
+				</li>
+				<li>
+					<a href="javascript:;" onclick="return clearCache();">清理缓存</a>
+				</li>
+				<li>
+					<a onclick="logout();">退出系统</a>
+				</li>
+			</ul>
+		</div>
+		<script language="javascript">
+			var timestamp = (Date.parse(new Date())).toString();
+			var timeInt = parseInt(timestamp.substring(0, 10));
+			var i = 0;
+			setInterval(function() {
+				now = new Date((timeInt + i + 28800) * 1000);
+				i++;
+				document.getElementById("times").innerHTML = now.toLocaleString();
+			}, 1000);
+			setInterval(function() {
+				today = new Date();
+				document.getElementById("local").innerHTML = today.toLocaleString();
+			}, 1000);
+
+			function hello_top() {
+				alert("hello");
+			}
+		</script>
+	</body>
+
+</html>

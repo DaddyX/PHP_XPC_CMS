@@ -1,0 +1,194 @@
+html,
+body {
+	height: 100%;
+}
+
+frame {
+	border: 1px solid #AAAAAA;
+}
+
+
+/**
+ * 公共头部
+ */
+
+.index_header {
+	background-image: url("../images/bg_header.png");
+}
+
+.index_header li {
+	display: inline;
+	margin-left: 10px;
+}
+
+
+/**
+ * 公共菜单
+ */
+
+.system_menu .nav {
+	border-bottom: 1px solid #CCCCCC;
+	width: 100%;
+	background-color: #EEEEEE;
+	font-size: 14px;
+	cursor: pointer;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+}
+
+.system_menu .nav_child {
+	font-size: 13px;
+	cursor: pointer;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 10px;
+}
+
+
+/**
+ * 公共选项卡
+ */
+
+.main-tab {
+	border-bottom: 1px solid #CCCCCC;
+	background: #efeef0;
+	height: 30px;
+	line-height: 30px;
+	overflow: hidden;
+	position: relative;
+}
+
+.main-tab .tab-btn {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	color: #999999;
+	z-index: 2;
+	top: 0;
+	background: #f2f2f2;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+}
+
+.main-tab .tab-nav {
+	margin-left: 30px;
+	width: 100000px;
+	height: 30px;
+	line-height: 30px;
+	overflow: hidden;
+}
+
+.main-tab .tab-btn-left {
+	left: 0;
+	border-right: solid 1px #ccc;
+}
+
+.main-tab .tab-btn-right {
+	right: 0;
+	border-left: solid 1px #ccc;
+}
+
+.tab-nav-title a {
+	color: #282828;
+	border-right: solid 1px #ccc;
+	display: block;
+	cursor: auto;
+	padding: 0 15px;
+	float: left;
+}
+
+.tab-nav-title .icon-close {}
+
+
+/**
+ * 主列表
+ */
+
+.main-container th {
+	font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #4f6b72;
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	border-top: 1px solid #C1DAD7;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: left;
+	padding: 6px 6px 6px 12px;
+	background: #CAE8EA;
+	min-width: 60px;
+}
+
+.main-container td {
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	background: #fff;
+	font-size: 11px;
+	padding: 6px 6px 6px 12px;
+	color: #4f6b72;
+}
+
+
+/**
+ * 表单
+ */
+
+input,
+select,
+textarea {
+	padding: 9px;
+	border: solid 1px #E5E5E5;
+	outline: 0;
+	font: normal 13px/100% Verdana, Tahoma, sans-serif;
+	width: 200px;
+	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+	background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+}
+
+input:hover,
+select:hover,
+textarea:hover,
+input:focus,
+select:focus,
+textarea:focus {
+	border-color: #C9C9C9;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
+}
+
+.form-group {
+	margin: 10px 0px 0px 20px;
+}
+
+.form-group label {
+	margin-left: 10px;
+	color: #999999;
+}
+
+.form-group textarea {
+	width: 400px;
+	max-width: 400px;
+	height: 150px;
+	line-height: 150%;
+}
+
+.form-buttons {
+	margin: 10px 0px 0px 20px;
+}
+
+.form-buttons a {
+	cursor: pointer;
+	width: auto;
+	padding: 9px 15px;
+	margin: 0px 10px 0px 0px;
+	background: #269ABC;
+	border: 0;
+	font-size: 14px;
+	color: #FFFFFF;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}

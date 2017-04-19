@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<include file="Public/meta" />
+		<style type="text/css">
+			
+		</style>
+		<script>
+			$(function(){ 
+				$('.btn-status-on').click(function() {
+					$.post("{:U('Authrule/status')}", {
+						"id": $(this).attr("data-id"),
+						"status": 1,
+					},
+					function(data) {
+						if(data.code == 200) {
+							jumpHref("{:U('Authrule/index')}");
+						} else {
+							alert(data.msg);
+						}
+					}, "json");
+				}),
+				$('.btn-status-off').click(function() {
+					$.post("{:U('Authrule/status')}", {
+						"id": $(this).attr("data-id"),
+						"status": 2,
+					},
+					function(data) {
+						if(data.code == 200) {
+							jumpHref("{:U('Authrule/index')}");
+						} else {
+							alert(data.msg);
+						}
+					}, "json");
+				})
+			});
+		</script>
+	</head>
+
+	<body>
+		<include file="Index/nav" />
+		<table class="main-container">
+			<tr>
+				<th>ID</th>
+				<th>名称</th>
+				<th>控制器</th>
+				<th>类型</th>
+				<th>上级菜单</th>
+				<th>状态</th>
+				<th>操作</th>
+			</tr>
+			<foreach name="data" item="vo">
+				<tr>
+					<td>{$vo[id]}</td>
+					<td>{$vo[name]}</td>
+					<td>{$vo[func]}</td>
+					<td>{$navType[$vo[type]]}</td>
+					<td>{$navList[$vo[pid]]}</td>
+					<td>{$navStatus[$vo[status]]}</td>
+					<td>
+						<a class="btn-status-off" data-id="{$vo[id]}">禁用</a>
+						<a class="btn-status-on" data-id="{$vo[id]}">启用</a>
+					</td>
+				</tr>
+			</foreach>
+		</table>
+	</body>
+
+</html>

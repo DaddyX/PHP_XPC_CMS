@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>后台管理系统</title>
+		<meta charset="utf-8">
+		<include file="Public/meta" />
+		<style type="text/css">
+
+		</style>
+	</head>
+
+	<frameset rows="10%,90%" frameborder="0">
+		<frame src="{:U('Index/header')}" id="frame_header" name="frame_header" noresize="noresize">
+			<frameset cols="10%,90%" frameborder="0">
+				<frame src="{:U('Index/menu')}" id="frame_menu" name="frame_menu" noresize="noresize">
+				<frame src="{:U('Index/main')}" id="frame_main" name="frame_main" noresize="noresize">
+			</frameset>
+	</frameset>
+
+</html>

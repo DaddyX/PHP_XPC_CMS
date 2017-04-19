@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<include file="Public/meta" />
+		<script>
+			function backHref() {
+				jumpHref("{:U('Authrule/index')}");
+			};
+
+			function submitForm() {
+				var func = $('input[name="func"]').val();
+				if(func == '') {
+					alert('请输入控制器名称');
+					return;
+				}
+				var type = $('select[name="type"]').val();
+				if(type == '') {
+					alert('请选择类型');
+					return;
+				}
+				var pid = $('select[name="pid"]').val();
+				var name = $('textarea[name="name"]').val();
+				if(name == '') {
+					alert('请输入名称');
+					return;
+				}
+				$.post("__SELF__", {
+						"func": func,
+						"type": type,
+						"pid": pid,
+						"name": name,
+					},
+					function(data) {
+						if(data.code == 200) {
+							window.parent.frame_menu.location.reload();
+							backHref();
+						} else {
+							alert(data.msg);
+						}
+					}, "json");
+			};
+		</script>
+		<style type="text/css">
+			.form-group .form-input {}
+		</style>
+	</head>
+
+	<body>
+		<include file="Index/nav" />
+		<form class="main-form">
+			<div class="form-group">
+				<label class="form-laber">控制器</label>
+				<div>
+					<input class="form-input" type="text" name="func" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="form-laber">类型</label>
+				<div>
+					<select name="type" class="form-input">
+						<option value="">-- 请选择 --</option>
+						<foreach name="navType" item="vo">
+							<option value="{$key}">{$vo}</option>
+						</foreach>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="form-laber">父级</label>
+				<div>
+					<select name="pid" class="form-input">
+						<option value="">-- 请选择 --</option>
+						<foreach name="navList" item="vo">
+							<option value="{$key}">{$vo}</option>
+						</foreach>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="form-laber">名称</label>
+				<div>
+					<textarea class="form-input" name="name"></textarea>
+				</div>
+			</div>
+			<div class="form-buttons">
+				<a class="form-input" onclick="backHref();">取消</a>
+				<a class="form-input" onclick="submitForm();">提交</a>
+			</div>
+		</form>
+	</body>
+
+</html>
