@@ -15,10 +15,6 @@ class ExplainController extends Controller {
 	}
 
 	public function send() {
-// 		import('ORG.Mail');
-// 		$result = SendMail('450183439@qq.com', 'xxx', 'sss', 'tt');
-// 		dump($result);
-
 		$result = $this->send_email('zhou2315@qq.com', 'hello2', 'test2');
 		dump($result);
 	}
