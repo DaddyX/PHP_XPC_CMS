@@ -3480,7 +3480,7 @@ class PHPMailer
     }
 }
 
-namespace LaneLead\PHPMailer;
+namespace PHPMailer;
 /**
  * PHPMailer exception handler
  * @package PHPMailer

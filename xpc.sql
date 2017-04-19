@@ -56,7 +56,7 @@ CREATE TABLE `db_web_menu` (
   `name` varchar(255) NOT NULL DEFAULT '' COMMENT '名字',
   `status` tinyint(3) NOT NULL DEFAULT '1' COMMENT '启用状态 1启用 2关闭',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='后台菜单';
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='后台菜单';
 
 #
 # Dumping data for table db_web_menu
@@ -79,6 +79,8 @@ INSERT INTO `db_web_menu` VALUES (13,'Explain/index',1,0,'图册管理',1);
 INSERT INTO `db_web_menu` VALUES (14,'Explain/list_index',2,13,'创建图册',1);
 INSERT INTO `db_web_menu` VALUES (15,'Explain/index',2,13,'管理图册',1);
 INSERT INTO `db_web_menu` VALUES (17,'Web/index',1,0,'袁立峰',1);
+INSERT INTO `db_web_menu` VALUES (18,'Mailer/index',1,0,'邮件管理',1);
+INSERT INTO `db_web_menu` VALUES (19,'Mailer/send',2,18,'发送邮件',1);
 /*!40000 ALTER TABLE `db_web_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
