@@ -9,10 +9,31 @@
 			html {
 				overflow: hidden;
 			}
+			
+			.system_menu .nav {
+				border-bottom: 1px solid #CCCCCC;
+				width: 100%;
+				background-color: #000;
+				font-size: 14px;
+				cursor: pointer;
+				padding-top: 4px;
+				padding-bottom: 4px;
+				padding-left: 10px;
+				color: #FFFFFF;
+			}
+			
+			.system_menu .nav_child {
+				font-size: 13px;
+				cursor: pointer;
+				padding-top: 2px;
+				padding-bottom: 2px;
+				padding-left: 10px;
+				color: #FFFFFF;
+			}
 		</style>
 	</head>
 
-	<body class="index_menu">
+	<body class="index_menu bg-black">
 		<div class="system_menu f16" id="system_menu">
 			<ul class="nav_list">
 				<li class="nav">
@@ -20,7 +41,7 @@
 				</li>
 				<foreach name="navList" item="vo">
 					<li class="nav">
-						<a href="javascript:;">{$vo[name]}</a>
+						<a>{$vo[name]}</a>
 					</li>
 					<ul class="nav_child_list">
 						<foreach name="vo[navChildList]" item="vo2">

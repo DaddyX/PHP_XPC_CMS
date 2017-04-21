@@ -350,7 +350,7 @@ a {
 a:link {
 	text-decoration: none;
 	/*下划线*/
-	color: #000000;
+	/*color: #ffffff;*/
 	/*颜色*/
 }
 
@@ -360,7 +360,7 @@ a:link {
 a:visited {
 	text-decoration: none;
 	/*下划线*/
-	color: #000000;
+	/*color: #000000;*/
 	/*颜色*/
 }
 
@@ -414,4 +414,16 @@ a.gray {
 	background: #000000 repeat;
 	opacity: 0.9;
 	-moz-opacity: 0.9;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.text-left{
+	text-align: left;
+}
+
+.text-right{
+	text-align: right;
 }

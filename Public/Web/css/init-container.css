@@ -7,45 +7,6 @@ frame {
 	border: 1px solid #AAAAAA;
 }
 
-
-/**
- * 公共头部
- */
-
-.index_header {
-	background-image: url("../images/bg_header.png");
-}
-
-.index_header li {
-	display: inline;
-	margin-left: 10px;
-}
-
-
-/**
- * 公共菜单
- */
-
-.system_menu .nav {
-	border-bottom: 1px solid #CCCCCC;
-	width: 100%;
-	background-color: #EEEEEE;
-	font-size: 14px;
-	cursor: pointer;
-	padding-top: 4px;
-	padding-bottom: 4px;
-	padding-left: 10px;
-}
-
-.system_menu .nav_child {
-	font-size: 13px;
-	cursor: pointer;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-left: 10px;
-}
-
-
 /**
  * 公共选项卡
  */
