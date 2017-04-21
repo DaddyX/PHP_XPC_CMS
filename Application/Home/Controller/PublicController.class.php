@@ -2,9 +2,9 @@
 
 namespace Home\Controller;
 
-use Think\Controller;
+use Common\Controller\WebController;
 
-class PublicController extends Controller {
+class PublicController extends WebController {
 
 	/**
 	 * 登录

@@ -8,32 +8,44 @@
 		<style>
 			html {
 				overflow: hidden;
+				background-color: #111433;
 			}
 			
-			.system_menu .nav {
-				border-bottom: 1px solid #CCCCCC;
-				width: 100%;
-				background-color: #000;
-				font-size: 14px;
-				cursor: pointer;
-				padding-top: 4px;
-				padding-bottom: 4px;
-				padding-left: 10px;
-				color: #FFFFFF;
+			.nav a {
+				padding: 0 20px;
+				height: 40px;
+				display: block;
+				font-size: 0.9rem;
+				font-family: "microsoft yahei";
+				color: #EEEEEE;
+				line-height: 40px;
+				border-bottom: 1px solid #242643;
 			}
 			
-			.system_menu .nav_child {
-				font-size: 13px;
-				cursor: pointer;
-				padding-top: 2px;
-				padding-bottom: 2px;
-				padding-left: 10px;
-				color: #FFFFFF;
+			.nav a:hover {
+				border-left: 4px solid #FF5053;
+				color: #FF5053;
+				background-color: #242643;
+			}
+			
+			.nav_child a {
+				padding: 0 40px;
+				height: 35px;
+				display: block;
+				font-size: 0.7rem;
+				font-family: "microsoft yahei";
+				color: #EEEEEE;
+				line-height: 35px;
+				border-bottom: 1px solid #242643;
+			}
+			
+			.nav_child a:hover {
+				color: #FF5053;
 			}
 		</style>
 	</head>
 
-	<body class="index_menu bg-black">
+	<body class="index_menu">
 		<div class="system_menu f16" id="system_menu">
 			<ul class="nav_list">
 				<li class="nav">
@@ -41,13 +53,12 @@
 				</li>
 				<foreach name="navList" item="vo">
 					<li class="nav">
-						<a>{$vo[name]}</a>
+						<a class="item">{$vo[name]}</a>
 					</li>
 					<ul class="nav_child_list">
 						<foreach name="vo[navChildList]" item="vo2">
-							<li class="nav_child" id="nav_child_{$vo2[id]}">
-								<span>└ </span>
-								<a href="__MODULE__/{$vo2[func]}" target="frame_main">{$vo2[name]}</a>
+							<li class="nav_child">
+								<a href="__MODULE__/{$vo2[func]}" data-id="{$vo2[id]}" data-name="{$vo2[name]}" target="frame_main"><span>└ </span>{$vo2[name]}</a>
 							</li>
 						</foreach>
 					</ul>
@@ -62,12 +73,18 @@
 					$(this).next("ul").toggle();
 				});
 				$(".nav_child").on("click", function() {
-					//var hrefStr = $(this).find("a").attr("href");
-					//nameStr = $(this).find("a").text();
-					//window.parent.frames("header").hello_top();
-					//window.prarent.frames['header'].location.system_name='aaa';
-					//var test = parent.frames['header'].getElementsByClassName('system_name').text();
-					//console.log(test);
+					var menuId = $(this).find("a").attr("data-id");
+					var menuName = $(this).find("a").attr("data-name");
+					var menuUrl = $(this).find("a").attr("href");
+					$.post("{:U('Index/addMenu')}", {
+						"menuId": menuId,
+						"menuName": menuName,
+						"menuUrl": menuUrl,
+					}, function(data) {
+						var html = $('.tab-nav .tab-nav-title').html();
+						html += '<a href="' + menuUrl + '" class="content-tab" data-id="menu' + menuId + '">' + menuName + '<span class="tab-close">&nbsp;&nbsp;x</span></a>';
+						$('.tab-nav .tab-nav-title').html(html);
+					}, "json");
 				});
 			});
 		</script>

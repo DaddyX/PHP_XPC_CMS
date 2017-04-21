@@ -2,9 +2,9 @@
 
 namespace Home\Controller;
 
-use Common\Controller\BaseController;
+use Common\Controller\WebController;
 
-class AuthruleController extends BaseController {
+class AuthruleController extends WebController {
 	public $typeList = array (
 			1 => '一级菜单',
 			2 => '二级菜单',

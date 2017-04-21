@@ -2,9 +2,9 @@
 
 namespace Home\Controller;
 
-use Think\Controller;
+use Common\Controller\WebController;
 
-class ExplainController extends Controller {
+class ExplainController extends WebController {
 
 	public function index() {
 		$this -> display();

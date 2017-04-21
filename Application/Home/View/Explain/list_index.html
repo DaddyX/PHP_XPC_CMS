@@ -102,40 +102,40 @@
 				addTab($(this));
 			});
 
-			$('#tabs a.tab').live('click', function() {
-				// Get the tab name 获取tab名称  
-				var contentname = $(this).attr("id") + "_content";
+//			$('#tabs a.tab').live('click', function() {
+//				// Get the tab name 获取tab名称  
+//				var contentname = $(this).attr("id") + "_content";
+//
+//				// hide all other tabs 隐藏其他tab  
+//				$("#content p").hide();
+//				$("#tabs li").removeClass("current");
+//
+//				// show current tab 显示当前tab  
+//				$("#" + contentname).show();
+//				$(this).parent().addClass("current");
+//			});
 
-				// hide all other tabs 隐藏其他tab  
-				$("#content p").hide();
-				$("#tabs li").removeClass("current");
-
-				// show current tab 显示当前tab  
-				$("#" + contentname).show();
-				$(this).parent().addClass("current");
-			});
-
-			$('#tabs a.remove').live('click', function() {
-				// Get the tab name 获取tab名称  
-				var tabid = $(this).parent().find(".tab").attr("id");
-
-				// remove tab and related content 删除标签和相关内容   
-				var contentname = tabid + "_content";
-				$("#" + contentname).remove();
-				$(this).parent().remove();
-
-				// if there is no current tab and if there are still tabs left, show the first one 如果没有当前的标签，如果仍然有标签左，显示第一个  
-				if($("#tabs li.current").length == 0 && $("#tabs li").length > 0) {
-
-					// find the first tab     找到第一个标签  
-					var firsttab = $("#tabs li:first-child");
-					firsttab.addClass("current");
-
-					// get its link name and show related content 获取它的链接名称并显示相关内容  
-					var firsttabid = $(firsttab).find("a.tab").attr("id");
-					$("#" + firsttabid + "_content").show();
-				}
-			});
+//			$('#tabs a.remove').live('click', function() {
+//				// Get the tab name 获取tab名称  
+//				var tabid = $(this).parent().find(".tab").attr("id");
+//
+//				// remove tab and related content 删除标签和相关内容   
+//				var contentname = tabid + "_content";
+//				$("#" + contentname).remove();
+//				$(this).parent().remove();
+//
+//				// if there is no current tab and if there are still tabs left, show the first one 如果没有当前的标签，如果仍然有标签左，显示第一个  
+//				if($("#tabs li.current").length == 0 && $("#tabs li").length > 0) {
+//
+//					// find the first tab     找到第一个标签  
+//					var firsttab = $("#tabs li:first-child");
+//					firsttab.addClass("current");
+//
+//					// get its link name and show related content 获取它的链接名称并显示相关内容  
+//					var firsttabid = $(firsttab).find("a.tab").attr("id");
+//					$("#" + firsttabid + "_content").show();
+//				}
+//			});
 		});
 
 		function addTab(link) {
@@ -167,7 +167,7 @@
 </head>
 
 <body>
-	<div id="main">
+	<div id="main">awd
 		<div id="doclist">
 
 			<ul id="documents">

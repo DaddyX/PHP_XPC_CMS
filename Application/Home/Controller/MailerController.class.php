@@ -2,9 +2,9 @@
 
 namespace Home\Controller;
 
-use Think\Controller;
+use Common\Controller\WebController;
 
-class MailerController extends Controller {
+class MailerController extends WebController {
 
 	public function index() {
 		$this -> display();

@@ -7,7 +7,7 @@
 		<include file="Public/meta" />
 		<style type="text/css">
 			.index_header {
-				background-color: #000;
+				background-color: #111433;
 			}
 			
 			.index_header li {
@@ -27,7 +27,7 @@
 	</head>
 
 	<body class="index_header">
-		<div class="system_name left f30"><span class="white">XPC</span></div>
+		<div class="system_name left f30"><span class="white">--</span></div>
 
 		<div id="times" class="white text-right f20"></div>
 
@@ -49,13 +49,11 @@
 			var timeInt = parseInt(timestamp.substring(0, 10));
 			var i = 0;
 			setSystemTime();
-
 			setInterval(setSystemTime, 1000);
 
 			function setSystemTime() {
-				now = new Date((timeInt + i + 28800) * 1000);
 				i++;
-				$('#times').html(now.toLocaleString());
+				$('#times').html(new Date((timeInt + i) * 1000).toString());
 			}
 		</script>
 	</body>
