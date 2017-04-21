@@ -6,6 +6,15 @@ class WebController extends BaseController {
 	
 	public function __construct() {
 		parent :: __construct();
+		
+		$username = cookie('username');
+		if (empty($username)){
+			if (CONTROLLER_NAME != 'Public') {
+				header('Location:' . U('Public/login'));
+				exit();
+			}
+		}
+		
 		$menuList = cookie('menuList');
 		if (empty($menuList)){
 			$menus = array(

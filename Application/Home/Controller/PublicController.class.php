@@ -49,14 +49,14 @@ class PublicController extends WebController {
 	 * 退出登录
 	 */
 	public function logout() {
-		if (!empty($_POST)){
-			cookie("username", null);
-			cookie("password", null);
-			$this->ajaxReturn(200, 'success');
-		}else{
-			$this->ajaxReturn(300, '退出失败');
+		if (empty($_POST)) {
+			cookie(null);
+			header('Location:' . U('Public/login'));
+			exit();
+		} else {
+			cookie(null);
+			$this -> ajaxReturn(200, 'success');
 		}
-		//$this -> redirect('Public/login');
 	}
 
 	/**

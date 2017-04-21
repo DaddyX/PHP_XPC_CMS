@@ -40,21 +40,31 @@
 					<a>清理缓存</a>
 				</li>
 				<li>
-					<a>退出系统</a>
+					<a class="btn-logout">退出系统</a>
 				</li>
 			</ul>
 		</div>
 		<script language="javascript">
-			var timestamp = (Date.parse(new Date())).toString();
-			var timeInt = parseInt(timestamp.substring(0, 10));
-			var i = 0;
-			setSystemTime();
-			setInterval(setSystemTime, 1000);
+			$(document).ready(function() {
+				var timestamp = (Date.parse(new Date())).toString();
+				var timeInt = parseInt(timestamp.substring(0, 10));
+				var i = 0;
+				setSystemTime();
+				setInterval(setSystemTime, 1000);
 
-			function setSystemTime() {
-				i++;
-				$('#times').html(new Date((timeInt + i) * 1000).toString());
-			}
+				function setSystemTime() {
+					i++;
+					$('#times').html(new Date((timeInt + i) * 1000).toString());
+				}
+
+				$('.btn-logout').click(function() {
+					$.post("{:U('Public/logout')}", {
+						"hello":"hello"
+					}, function(data) {
+						window.parent.location.href = "{:U('Public/login')}";
+					}, "json");
+				});
+			});
 		</script>
 	</body>
 
