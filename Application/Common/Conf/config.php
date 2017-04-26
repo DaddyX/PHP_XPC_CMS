@@ -44,6 +44,6 @@ return array(
 			'username' =>'450183439@qq.com', //邮箱帐号
 			'psw' => 'ktfzawngqxbwbijb', //邮箱密码 QQ使用SMTP授权码 uwrfbgqqfodjfaea
 			'From' => '450183439@qq.com', //发件人地址
-			'FromName' => 'zhouxuan', //发件人姓名
+			'FromName' => '童颜无忌', //发件人姓名
 	),
 );
