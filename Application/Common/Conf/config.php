@@ -42,7 +42,7 @@ return array(
 			'host' => 'smtp.qq.com',	 //SMTP 服务器
 			'port' => '465',	//SMTP 端口, 一般为25, QQ为465或587
 			'username' =>'450183439@qq.com', //邮箱帐号
-			'psw' => 'ktfzawngqxbwbijb', //邮箱密码 QQ使用SMTP授权码 uwrfbgqqfodjfaea
+			'psw' => 'xuanzhouktfzawngqxbwbijbxuanzhou', //邮箱密码 QQ使用SMTP授权码
 			'From' => '450183439@qq.com', //发件人地址
 			'FromName' => '童颜无忌', //发件人姓名
 	),
