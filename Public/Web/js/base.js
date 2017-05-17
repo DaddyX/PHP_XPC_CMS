@@ -6,3 +6,10 @@ Date.prototype.toString = function() {
 		":" + (this.getMinutes() > 9 ? this.getMinutes() : "0" + this.getMinutes()) +
 		":" + (this.getSeconds() > 9 ? this.getSeconds() : "0" + this.getSeconds());
 }
+
+var jumpHref = function(href, w) {
+	if(href) {
+		w = w || window;
+		w.location.href = href;
+	}
+};

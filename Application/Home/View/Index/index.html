@@ -5,14 +5,106 @@
 		<title>CMS</title>
 		<meta charset="utf-8">
 		<include file="Public/meta" />
+		<style type="text/css">
+			
+		</style>
+		<script type="text/javascript" charset="utf-8" src="__PUBLIC__/Web/js/xpc-index.js"></script>
 	</head>
 
-	<frameset rows="10%,90%" frameborder="0">
-		<frame src="{:U('Index/header')}" id="frame_header" name="frame_header" noresize="noresize">
-			<frameset cols="10%,90%" frameborder="0">
-				<frame src="{:U('Index/menu')}" id="frame_menu" name="frame_menu" noresize="noresize">
-				<frame src="{:U('Index/main')}" id="frame_main" name="frame_main" noresize="noresize">
-			</frameset>
-	</frameset>
+	<body>
+		<!--顶部栏-->
+		<header id="base_header">
+			<div class="right">
+				<span id="header_times" class="white right f20"></span>
+				<ul class="white">
+					<li>
+						<a>修改密码</a>
+					</li>
+					<li>
+						<a>清理缓存</a>
+					</li>
+					<li>
+						<a>退出系统</a>
+					</li>
+				</ul>
+			</div>
+		</header>
+		<!--菜单栏-->
+		<aside id="base_menus">
+			<div>菜单栏</div>
+			<ul id="tree_root">
+				<li>
+					<span class="tree1"><b class="Off">一级分类111</b></span>
+					<ul class="tree2" style="display:none;">
+						<li>
+							<a>&nbsp;&nbsp;二级分类</a>
+						</li>
+						<li>
+							<a>&nbsp;&nbsp;二级分类</a>
+						</li>
+						<li>
+							<a>&nbsp;&nbsp;二级分类</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="tree1"><b class="Off">一级分类222</b></span>
+					<ul class="tree2" style="display:none;">
+						<li>
+							<a>&nbsp;&nbsp;二级分类</a>
+						</li>
+						<li>
+							<a>&nbsp;&nbsp;二级分类</a>
+						</li>
+						<li>
+							<a>&nbsp;&nbsp;二级分类</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="tree1"><b class="Off">一级分类333</b></span>
+					<ul class="tree2" style="display:none;">
+						<li>
+							<a>&nbsp;&nbsp;二级分类</a>
+						</li>
+						<li>
+							<a>&nbsp;&nbsp;二级分类</a>
+						</li>
+						<li>
+							<a>&nbsp;&nbsp;二级分类</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</aside>
+
+		<div id="base_content">
+			<!--导航栏-->
+			<nav id="base_nav">
+				<span class="nav-btn">&lt;</span>
+				<a>首页</a>
+				<a>首页</a>
+				<a>首页</a>
+				<span class="nav-btn">&gt;</span>
+			</nav>
+
+		</div>
+
+		<!--页脚-->
+		<footer id="base_footer">
+			Copyright 1995-2017 最终解释权归XPC所有
+		</footer>
+
+		<script language="javascript">
+			$(document).ready(function() {
+				//初始化时间
+				initTimeWidget($('#header_times'));
+				//初始化折叠菜单
+				$("#tree_root").find("li").children("span").click(function() {
+					setTreeStyle($(this));
+				});
+			});
+		</script>
+	</body>
 
 </html>
