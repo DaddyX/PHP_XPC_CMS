@@ -6,7 +6,72 @@
 		<meta charset="utf-8">
 		<include file="Public/meta" />
 		<style type="text/css">
+			#base_menus {
+				position: fixed;
+				top: 60px;
+				left: 0;
+				width: 200px;
+				height: 100%;
+				background-color: #393D49;
+				color: #C2C2C2;
+			}
 			
+			#base_menus .title {
+				height: 30px;
+				width: 100%;
+				text-align: center;
+				line-height: 30px;
+			}
+			
+			#base_accordion {
+				width: 100%;
+				background: #393D49;
+				border-top: 1px solid #AAAAAA;
+			}
+			
+			#base_accordion .tree {
+				height: 40px;
+				line-height: 40px;
+				font-size: 0.9rem;
+				font-family: roman;
+				padding-left: 10px;
+				cursor: pointer;
+				border-left: 5px solid transparent;
+			}
+			
+			#base_accordion li div:hover {
+				background-color: #4E5465;
+				color: #FFFFFF;
+				border-left: 5px solid #33AECC;
+			}
+			
+			#base_accordion .submenu {
+				display: none;
+				margin-left: 30px;
+			}
+			
+			#base_accordion .submenu li {
+				height: 28px;
+				width: 100%;
+				line-height: 28px;
+				font-size: 0.8rem;
+				cursor: pointer;
+			}
+			
+			#base_accordion .submenu a {
+				color: #C2C2C2;
+				display: block;
+			}
+			
+			#base_accordion .submenu a:hover {
+				color: #FFFFFF;
+			}
+			
+			#base_content #base_ifame{
+				height: 100%;
+				width: 100%;
+				padding: 20px;
+			}
 		</style>
 		<script type="text/javascript" charset="utf-8" src="__PUBLIC__/Web/js/xpc-index.js"></script>
 	</head>
@@ -14,9 +79,9 @@
 	<body>
 		<!--顶部栏-->
 		<header id="base_header">
+			<span class="white f20">HELO</span>
 			<div class="right">
-				<span id="header_times" class="white right f20"></span>
-				<ul class="white">
+				<ul class="white right">
 					<li>
 						<a>修改密码</a>
 					</li>
@@ -27,51 +92,54 @@
 						<a>退出系统</a>
 					</li>
 				</ul>
+				<span id="header_times" class="header_times white f16"></span>
 			</div>
 		</header>
 		<!--菜单栏-->
 		<aside id="base_menus">
-			<div>菜单栏</div>
-			<ul id="tree_root">
+			<div class="title">≡ 菜单栏 ≡</div>
+			<ul id="base_accordion">
 				<li>
-					<span class="tree1"><b class="Off">一级分类111</b></span>
-					<ul class="tree2" style="display:none;">
+					<div class="tree"><span class="">Diseño web</span></div>
+					<ul class="submenu">
 						<li>
-							<a>&nbsp;&nbsp;二级分类</a>
+							<a href="#">Photoshop</a>
 						</li>
 						<li>
-							<a>&nbsp;&nbsp;二级分类</a>
-						</li>
-						<li>
-							<a>&nbsp;&nbsp;二级分类</a>
+							<a href="#">HTML</a>
 						</li>
 					</ul>
 				</li>
 				<li>
-					<span class="tree1"><b class="Off">一级分类222</b></span>
-					<ul class="tree2" style="display:none;">
+					<div class="tree"><span class="">Desarrollo front-end</span></div>
+					<ul class="submenu">
 						<li>
-							<a>&nbsp;&nbsp;二级分类</a>
+							<a href="#">Javascript</a>
 						</li>
 						<li>
-							<a>&nbsp;&nbsp;二级分类</a>
-						</li>
-						<li>
-							<a>&nbsp;&nbsp;二级分类</a>
+							<a href="#">jQuery</a>
 						</li>
 					</ul>
 				</li>
 				<li>
-					<span class="tree1"><b class="Off">一级分类333</b></span>
-					<ul class="tree2" style="display:none;">
+					<div class="tree"><span class="">Diseño responsive</span></div>
+					<ul class="submenu">
 						<li>
-							<a>&nbsp;&nbsp;二级分类</a>
+							<a href="#">Tablets</a>
 						</li>
 						<li>
-							<a>&nbsp;&nbsp;二级分类</a>
+							<a href="#">Dispositivos mobiles</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<div class="tree"><span class="">什么鬼</span></div>
+					<ul class="submenu">
+						<li>
+							<a href="#">Google</a>
 						</li>
 						<li>
-							<a>&nbsp;&nbsp;二级分类</a>
+							<a href="#">Bing</a>
 						</li>
 					</ul>
 				</li>
@@ -87,12 +155,14 @@
 				<a>首页</a>
 				<span class="nav-btn">&gt;</span>
 			</nav>
-
+			<div id="base_ifame">
+				<iframe frameborder="0" src="{:U('Index/main')}"></iframe>
+			</div>
 		</div>
 
 		<!--页脚-->
 		<footer id="base_footer">
-			Copyright 1995-2017 最终解释权归XPC所有
+			Copyright 1995-2017 版权所有 翻版必究 最终解释权归XPC所有
 		</footer>
 
 		<script language="javascript">
@@ -100,10 +170,43 @@
 				//初始化时间
 				initTimeWidget($('#header_times'));
 				//初始化折叠菜单
-				$("#tree_root").find("li").children("span").click(function() {
-					setTreeStyle($(this));
+				$('#base_accordion').children('li').children('.tree').click(function() {
+					toogleAccording($(this));
 				});
+
 			});
+
+			function toogleAccording(obj) {
+				var isOpen = obj.children('span').hasClass('active');
+				if(isOpen) {
+					//obj.css({
+					//	"background-color" : "#393D49",
+					//	"color" : "#eeeeee"
+					//});
+					obj.children('span').removeClass('active');
+					obj.next('.submenu').css({
+						"display": "none"
+					});
+				} else {
+					//obj.css({
+					//	"background-color" : "#4E5465",
+					//	"color" : "#ffffff",
+					//});
+					//obj.parent().siblings().children('.tree').css({
+					//	"background-color" : "#393D49",
+					//	"color" : "#eeeeee"
+					//});
+					obj.children('span').addClass('active');
+					obj.parent().siblings().children('.tree').children('span').removeClass('active');
+					obj.next('.submenu').css({
+						"display": "block"
+					});
+					obj.parent().siblings().children('.submenu').css({
+						"display": "none"
+					});
+				}
+
+			}
 		</script>
 	</body>
 
