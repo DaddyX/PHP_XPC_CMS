@@ -67,10 +67,15 @@
 				color: #FFFFFF;
 			}
 			
-			#base_content #base_ifame{
+			#base_ifame{
 				height: 100%;
 				width: 100%;
 				padding: 20px;
+			}
+			
+			#base_ifame iframe{
+				height: 100%;
+				width: 100%;
 			}
 		</style>
 		<script type="text/javascript" charset="utf-8" src="__PUBLIC__/Web/js/xpc-index.js"></script>
@@ -132,17 +137,6 @@
 						</li>
 					</ul>
 				</li>
-				<li>
-					<div class="tree"><span class="">什么鬼</span></div>
-					<ul class="submenu">
-						<li>
-							<a href="#">Google</a>
-						</li>
-						<li>
-							<a href="#">Bing</a>
-						</li>
-					</ul>
-				</li>
 			</ul>
 		</aside>
 
@@ -156,7 +150,7 @@
 				<span class="nav-btn">&gt;</span>
 			</nav>
 			<div id="base_ifame">
-				<iframe frameborder="0" src="{:U('Index/main')}"></iframe>
+				<iframe src="{:U('Index/main')}" frameborder="0" scrolling="no"></iframe>
 			</div>
 		</div>
 
@@ -174,8 +168,28 @@
 					toogleAccording($(this));
 				});
 
+				$('.submenu').children('li').click(function(){
+					var panel = $('#base_ifame');
+					panel.children('iframe').css("display", "none");
+					//动态添加iframe
+					var iframe = document.createElement('iframe');
+					iframe.src="{:U('Authrule/index')}";
+					iframe.frameBorder = 0;
+					iframe.scrolling = "no";
+					panel.append(iframe);
+				});
 			});
-
+			
+			/**
+			 * 添加导航
+			 */
+			function addTab(name){
+				
+			}
+			
+			/**
+			 * 开关折叠菜单
+			 */
 			function toogleAccording(obj) {
 				var isOpen = obj.children('span').hasClass('active');
 				if(isOpen) {
@@ -205,7 +219,6 @@
 						"display": "none"
 					});
 				}
-
 			}
 		</script>
 	</body>
