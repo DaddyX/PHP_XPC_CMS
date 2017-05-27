@@ -37,7 +37,6 @@ class PublicController extends WebController {
 		ob_clean();
 		$config['fontSize'] = 20; // 验证码字体大小
 		$config['length'] = 4; // 验证码位数
-		$config['imageH'] = 35;
 		$config['useNoise'] = false; // 关闭验证码杂点
 		
 		$verify = new \Think\Verify($config);

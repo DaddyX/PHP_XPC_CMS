@@ -17,6 +17,18 @@
 	font-family: charcoal;
 }
 
+#base_header a{
+	color: #FFFFFF;
+	margin-right: 5px;
+}
+
+#base_header a:hover{
+	color: #123456;
+}
+
+#header_times{
+	margin-right: 20px;
+}
 
 /**
  * 内容区域
@@ -87,8 +99,8 @@ textarea:focus {
 	-webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
 }
 
-.form-group {
-	margin: 10px 0px 0px 20px;
+/*.form-group {
+	margin: 5px auto;	
 }
 
 .form-group label {
@@ -118,4 +130,4 @@ textarea:focus {
 	color: #FFFFFF;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
-}
+}*/

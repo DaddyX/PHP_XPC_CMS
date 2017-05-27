@@ -86,7 +86,8 @@
 		<header id="base_header">
 			<span class="white f20">HELO</span>
 			<div class="right">
-				<ul class="white right">
+				<span id="header_times" class="header_times white f16"></span>
+				<ul class="right">
 					<li>
 						<a>修改密码</a>
 					</li>
@@ -94,10 +95,9 @@
 						<a>清理缓存</a>
 					</li>
 					<li>
-						<a>退出系统</a>
+						<a href="{:U('Public/logout')}">退出系统</a>
 					</li>
 				</ul>
-				<span id="header_times" class="header_times white f16"></span>
 			</div>
 		</header>
 		<!--菜单栏-->
@@ -107,10 +107,10 @@
 				<li>
 					<div class="tree"><span class="">Diseño web</span></div>
 					<ul class="submenu">
-						<li>
+						<li data-src="{:U('Authrule/index')}">
 							<a href="#">Photoshop</a>
 						</li>
-						<li>
+						<li data-src="{:U('Authrule/save')}">
 							<a href="#">HTML</a>
 						</li>
 					</ul>
@@ -118,10 +118,10 @@
 				<li>
 					<div class="tree"><span class="">Desarrollo front-end</span></div>
 					<ul class="submenu">
-						<li>
+						<li data-src="{:U('Explain/index')}">
 							<a href="#">Javascript</a>
 						</li>
-						<li>
+						<li data-src="{:U('Explain/list_index')}">
 							<a href="#">jQuery</a>
 						</li>
 					</ul>
@@ -129,10 +129,10 @@
 				<li>
 					<div class="tree"><span class="">Diseño responsive</span></div>
 					<ul class="submenu">
-						<li>
+						<li data-src="{:U('Mailer/index')}">
 							<a href="#">Tablets</a>
 						</li>
-						<li>
+						<li data-src="{:U('Mailer/send')}">
 							<a href="#">Dispositivos mobiles</a>
 						</li>
 					</ul>
@@ -150,7 +150,7 @@
 				<span class="nav-btn">&gt;</span>
 			</nav>
 			<div id="base_ifame">
-				<iframe src="{:U('Index/main')}" frameborder="0" scrolling="no"></iframe>
+				<iframe class="Index-main" src="{:U('Index/main')}" frameborder="0" scrolling="no"></iframe>
 			</div>
 		</div>
 
@@ -169,16 +169,35 @@
 				});
 
 				$('.submenu').children('li').click(function(){
-					var panel = $('#base_ifame');
-					panel.children('iframe').css("display", "none");
+					var src = $(this).attr('data-src');
+					addFrame(src);
+				});
+			});
+			
+			/**
+			 * 添加iframe
+			 */
+			function addFrame(src){
+				var panel = $('#base_ifame');
+				var srcList = new Array();
+				panel.children('iframe').each(function(){
+					$(this).css("display", "none");
+					srcList.push($(this).attr('src'));
+				});
+				var className = src.substring(5, src.length);
+				className = className.replace('/', '-');
+				if(srcList.indexOf(src) > -1){
+					panel.children("."+className).css("display", "block");
+				}else{
 					//动态添加iframe
 					var iframe = document.createElement('iframe');
-					iframe.src="{:U('Authrule/index')}";
+					iframe.className = className;
+					iframe.src = src;
 					iframe.frameBorder = 0;
 					iframe.scrolling = "no";
 					panel.append(iframe);
-				});
-			});
+				}
+			}
 			
 			/**
 			 * 添加导航
