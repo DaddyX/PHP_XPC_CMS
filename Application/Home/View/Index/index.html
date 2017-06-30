@@ -4,161 +4,55 @@
 	<head>
 		<title>CMS</title>
 		<meta charset="utf-8">
+		<!--引入CSS样式-->
 		<include file="Public/meta" />
-		<style type="text/css">
-			#base_menus {
-				position: fixed;
-				top: 60px;
-				left: 0;
-				width: 200px;
-				height: 100%;
-				background-color: #393D49;
-				color: #C2C2C2;
-			}
-			
-			#base_menus .title {
-				height: 30px;
-				width: 100%;
-				text-align: center;
-				line-height: 30px;
-			}
-			
-			#base_accordion {
-				width: 100%;
-				background: #393D49;
-				border-top: 1px solid #AAAAAA;
-			}
-			
-			#base_accordion .tree {
-				height: 40px;
-				line-height: 40px;
-				font-size: 0.9rem;
-				font-family: roman;
-				padding-left: 10px;
-				cursor: pointer;
-				border-left: 5px solid transparent;
-			}
-			
-			#base_accordion li div:hover {
-				background-color: #4E5465;
-				color: #FFFFFF;
-				border-left: 5px solid #33AECC;
-			}
-			
-			#base_accordion .submenu {
-				display: none;
-				margin-left: 30px;
-			}
-			
-			#base_accordion .submenu li {
-				height: 28px;
-				width: 100%;
-				line-height: 28px;
-				font-size: 0.8rem;
-				cursor: pointer;
-			}
-			
-			#base_accordion .submenu a {
-				color: #C2C2C2;
-				display: block;
-			}
-			
-			#base_accordion .submenu a:hover {
-				color: #FFFFFF;
-			}
-			
-			#base_ifame{
-				height: 100%;
-				width: 100%;
-				padding: 20px;
-			}
-			
-			#base_ifame iframe{
-				height: 100%;
-				width: 100%;
-			}
-		</style>
-		<script type="text/javascript" charset="utf-8" src="__PUBLIC__/Web/js/xpc-index.js"></script>
 	</head>
 
 	<body>
-		<!--顶部栏-->
-		<header id="base_header">
-			<span class="white f20">HELO</span>
-			<div class="right">
-				<span id="header_times" class="header_times white f16"></span>
-				<ul class="right">
-					<li>
-						<a>修改密码</a>
-					</li>
-					<li>
-						<a>清理缓存</a>
-					</li>
-					<li>
-						<a href="{:U('Public/logout')}">退出系统</a>
-					</li>
-				</ul>
+		<!--页头-->
+		<div class="navbar navbar-default">
+			<div class="navbar-header">
+				<a href="#" class="navbar-brand">某管理系统</a>
 			</div>
-		</header>
-		<!--菜单栏-->
-		<aside id="base_menus">
-			<div class="title">≡ 菜单栏 ≡</div>
-			<ul id="base_accordion">
-				<li>
-					<div class="tree"><span class="">Diseño web</span></div>
-					<ul class="submenu">
-						<li data-src="{:U('Authrule/index')}">
-							<a href="#">Photoshop</a>
+			<ul class="nav navbar-nav">
+				<li class="active">
+					<a href="#">首页</a>
+				</li>
+				<li class="dropdown">
+					<a href="" data-toggle="dropdown">功能<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li class="dropdown-header">业务功能</li>
+						<li>
+							<a href="#">信息建立</a>
 						</li>
-						<li data-src="{:U('Authrule/save')}">
-							<a href="#">HTML</a>
+						<li>
+							<a href="#">信息查询</a>
+						</li>
+						<li>
+							<a href="#">信息管理</a>
+						</li>
+						<li class="divider"></li>
+						<li class="dropdown-header">系统功能</li>
+						<li>
+							<a href="#">设置</a>
 						</li>
 					</ul>
 				</li>
 				<li>
-					<div class="tree"><span class="">Desarrollo front-end</span></div>
-					<ul class="submenu">
-						<li data-src="{:U('Explain/index')}">
-							<a href="#">Javascript</a>
-						</li>
-						<li data-src="{:U('Explain/list_index')}">
-							<a href="#">jQuery</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<div class="tree"><span class="">Diseño responsive</span></div>
-					<ul class="submenu">
-						<li data-src="{:U('Mailer/index')}">
-							<a href="#">Tablets</a>
-						</li>
-						<li data-src="{:U('Mailer/send')}">
-							<a href="#">Dispositivos mobiles</a>
-						</li>
-					</ul>
+					<a href="#">帮助</a>
 				</li>
 			</ul>
-		</aside>
-
-		<div id="base_content">
-			<!--导航栏-->
-			<nav id="base_nav">
-				<span class="nav-btn">&lt;</span>
-				<a>首页</a>
-				<a>首页</a>
-				<a>首页</a>
-				<span class="nav-btn">&gt;</span>
-			</nav>
-			<div id="base_ifame">
-				<iframe class="Index-main" src="{:U('Index/main')}" frameborder="0" scrolling="no"></iframe>
+			<div class="navbar-form navbar-right">
+				<div class="form-group">
+					<input class="form-control" type="text" name="username" id="username" value="" placeholder="用户名..." />
+					<input class="form-control" type="text" name="username" id="username" value="" placeholder="密码..." />
+				</div>
+				<button class="btn btn-default" type="button">登录</button>
 			</div>
 		</div>
 
-		<!--页脚-->
-		<footer id="base_footer">
-			Copyright 1995-2017 版权所有 翻版必究 最终解释权归XPC所有
-		</footer>
-
+		<!--引入JS脚本-->
+		<include file="Public/script" />
 		<script language="javascript">
 			$(document).ready(function() {
 				//初始化时间
@@ -168,27 +62,27 @@
 					toogleAccording($(this));
 				});
 
-				$('.submenu').children('li').click(function(){
+				$('.submenu').children('li').click(function() {
 					var src = $(this).attr('data-src');
 					addFrame(src);
 				});
 			});
-			
+
 			/**
 			 * 添加iframe
 			 */
-			function addFrame(src){
+			function addFrame(src) {
 				var panel = $('#base_ifame');
 				var srcList = new Array();
-				panel.children('iframe').each(function(){
+				panel.children('iframe').each(function() {
 					$(this).css("display", "none");
 					srcList.push($(this).attr('src'));
 				});
 				var className = src.substring(5, src.length);
 				className = className.replace('/', '-');
-				if(srcList.indexOf(src) > -1){
-					panel.children("."+className).css("display", "block");
-				}else{
+				if(srcList.indexOf(src) > -1) {
+					panel.children("." + className).css("display", "block");
+				} else {
 					//动态添加iframe
 					var iframe = document.createElement('iframe');
 					iframe.className = className;
@@ -198,14 +92,14 @@
 					panel.append(iframe);
 				}
 			}
-			
+
 			/**
 			 * 添加导航
 			 */
-			function addTab(name){
-				
+			function addTab(name) {
+
 			}
-			
+
 			/**
 			 * 开关折叠菜单
 			 */

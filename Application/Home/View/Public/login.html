@@ -4,101 +4,86 @@
 	<head>
 		<title>XPC-登录</title>
 		<meta charset="UTF-8">
+		<!--引入CSS样式-->
 		<include file="Public/meta" />
 
 		<style type="text/css">
 			body {
-				background: url(__PUBLIC__/Web/images/loginbg_02.jpg) no-repeat center center fixed;
+				background: url(__PUBLIC__/img/loginbg-imgs/loginbg_02.jpg) no-repeat center center fixed;
 				-webkit-background-size: cover;
 				-moz-background-size: cover;
 				-o-background-size: cover;
 				background-size: cover;
 			}
 			
-			#main_box {
-				position: relative;
-				top: 25%;
-				width: 500px;
-				margin: 0 auto;
-				padding: 50px 60px;
-				background: #FAFAFA;
-				background: rgba(255, 255, 255, 0.5);
-				border: 1px #DDD solid;
-				border-radius: 5px;
-				-webkit-box-shadow: 1px 5px 8px #888888;
-				-moz-box-shadow: 1px 5px 8px #888888;
-				box-shadow: 1px 5px 8px #888888;
+			.modal-dialog {
+				margin-top: 13%;
 			}
 			
-			.form-group {
-				width: 100%;
-				height: auto;
-				margin: 10px 0;
-			}
-			
-			.form-group label{
-				font-family: "microsoft sans serif";
-				font-size: 16px;
-				display: inline-block;
-			}
-			
-			.form-group .form-control{
-				width: 300px;
-				vertical-align: middle;
-			}
-			
-			.form-group label.t {
-				width: 120px;
-				text-align: right;
+			a {
 				cursor: pointer;
-				vertical-align: middle;
-			}
-			
-			.form-group .verify-img{
-				width: 90px;
-				vertical-align: middle;
-				margin-left: 10px;
-				height: 38px;
-			}
-			
-			.bottom {
-				text-align: center;
-				font-size: 12px;
-				clear: both;
-				padding-top: 20px;
 			}
 		</style>
-		<script type="text/javascript">
-			$(function() {
-				var bg = Math.floor(Math.random() * 9 + 1);
-				$('body').css('background-image', 'url(__PUBLIC__/Web/images/loginbg_0' + bg + '.jpg)');
-			});
-		</script>
 	</head>
 
 	<body>
-		
-		<div id="main_box">
-			<form action="{:U('Public/login')}" method="post">
-				<div class="form-group">
-					<label for="username" class="t">账　号：　</label><input id="username" name="username" type="text" class="form-control" autocomplete="off">
+		<div class="modal show">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">登录系统</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal" action="{:U('Public/login')}" method="post">
+							<div class="form-group">
+								<label for="username" class="control-label col-sm-2">账　号：</label>
+								<div class="col-sm-10">
+									<input id="username" name="username" type="text" class="form-control" autocomplete="off" placeholder="请输入用户名">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="password" class="control-label col-sm-2">密　码：</label>
+								<div class="col-sm-10">
+									<input id="password" name="password" type="password" class="form-control" placeholder="请输入密码">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="verify" class="control-label col-sm-2">验证码：</label>
+								<div class="col-sm-4">
+									<input id="verify" name="verify" type="text" class="form-control">
+								</div>
+								<div class="col-sm-3">
+									<a class="refresh-verify"><img class="img-responsive" src="{:U('Public/verify')}" /></a>
+								</div>
+								<div class="col-sm-3">
+									<a href="#" class="form-label"><u>忘记密码？</u></a>
+								</div>
+							</div>
+							<div class="form-group text-center" style="margin-top: 40px;">
+								<button type="submit" class="btn btn-primary" style="width: 150px;margin: 0 10px;">登录</button>
+								<button type="reset" class="btn btn-danger" style="width: 150px;margin: 0 10px;">重新输入</button>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<span>Power by : XPC 技术支持QQ：<a href="tencent://message/?uin=450183439&Site=&Menu=yes">450183439</a></span>
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="password" class="t">密　码：　</label><input id="password" name="password" type="password" class="form-control">
-				</div>
-				<div class="form-group">
-					<label for="verify" class="t">验证码：　</label><input id="verify" type="text"><img class="verify-img" src="{:U('Public/verify')}" />
-				</div>
-				<hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin: 20px;"/>
-				<div class="form-group">
-					<input type="submit" value="&nbsp;登&nbsp;录&nbsp;" class="left">
-					<input type="reset" value="&nbsp;重&nbsp;置&nbsp;" class="right">
-				</div>
-			</form>
-			<div class="bottom">Power by
-				<a href="javascript:;" target="_blank">XPC</a> 技术支持QQ:450183439
 			</div>
 		</div>
+
+		<!--引入JS脚本-->
+		<include file="Public/script" />
+		<script type="text/javascript">
+			$(function() {
+				$('body').css('background-image', 'url(__PUBLIC__/img/loginbg-imgs/loginbg_0' + Math.floor(Math.random() * 9 + 1) + '.jpg)');
+
+				//初始化验证码
+				$('.refresh-verify').click(function() {
+					$('.refresh-verify img').attr('src', "{:U('Public/verify')}?time=" + Math.random());
+				});
+			});
+		</script>
 	</body>
 
 </html>

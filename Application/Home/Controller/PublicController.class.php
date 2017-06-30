@@ -13,10 +13,18 @@ class PublicController extends WebController {
 		if (!empty($_POST)) {
 			$username = I('post.username', "");
 			$password = md5(I('post.password', ""));
+			$code = I('post.verify', "");
+			
+			$verify = new \Think\Verify();
+			$checkCode = $verify -> check($code);
+			if (!$checkCode) {
+				$this -> error('验证码错误');
+			}
 			
 			$where['username'] = $username;
 			$where['password'] = $password;
 			$rs = M('Admin') -> where($where) -> find();
+			
 			if (!$rs) {
 				$this -> error("用户名或密码错误");
 			}
